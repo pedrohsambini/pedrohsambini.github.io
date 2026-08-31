@@ -33,10 +33,11 @@
       --key-border: rgba(90, 110, 180, 0.35);
       --key-glow: rgba(0, 240, 255, 0.2);
 
-      --tile-size: clamp(38px, min(8.2vh, 12vw), 56px);
+      /* Dimensões fluidas dinâmicas */
+      --tile-size: clamp(38px, min(8.6vh, 12.5vw), 58px);
       --board-gap: clamp(4px, 1vh, 8px);
-      --key-height: clamp(38px, 5.6vh, 50px);
-      --font-tile: clamp(1.2rem, 3.6vh, 1.8rem);
+      --key-height: clamp(38px, 5.8vh, 52px);
+      --font-tile: clamp(1.2rem, 3.8vh, 1.85rem);
       --font-key: clamp(0.78rem, 1.9vh, 1.05rem);
     }
 
@@ -97,7 +98,7 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      padding: clamp(4px, 1vh, 8px) clamp(6px, 2vw, 12px);
+      padding: clamp(4px, 1vh, 10px) clamp(6px, 2vw, 12px);
     }
 
     header {
@@ -106,8 +107,8 @@
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border: 1px solid var(--panel-border);
-      border-radius: clamp(12px, 2.5vw, 16px);
-      padding: clamp(6px, 1.2vh, 9px) clamp(8px, 2vw, 14px);
+      border-radius: clamp(12px, 2.5vw, 18px);
+      padding: clamp(6px, 1.2vh, 10px) clamp(8px, 2vw, 14px);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -118,7 +119,7 @@
 
     .header-actions {
       display: flex;
-      gap: clamp(4px, 1vw, 6px);
+      gap: clamp(3px, 1vw, 6px);
       align-items: center;
     }
 
@@ -130,7 +131,7 @@
 
     .logo-badge h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: clamp(1.05rem, 2.4vh, 1.35rem);
+      font-size: clamp(1rem, 2.4vh, 1.35rem);
       font-weight: 900;
       letter-spacing: clamp(1px, 0.4vw, 2px);
       background: linear-gradient(90deg, var(--neon-cyan), #fff, var(--neon-magenta));
@@ -147,8 +148,8 @@
       cursor: pointer;
       font-family: 'Orbitron', sans-serif;
       font-weight: 700;
-      border-radius: clamp(7px, 1.6vw, 10px);
-      padding: clamp(5px, 0.9vh, 8px) clamp(7px, 1.5vw, 10px);
+      border-radius: clamp(8px, 1.8vw, 11px);
+      padding: clamp(5px, 0.9vh, 8px) clamp(6px, 1.4vw, 10px);
       font-size: clamp(0.66rem, 1.3vh, 0.78rem);
       letter-spacing: 0.5px;
       display: flex;
@@ -172,7 +173,7 @@
     }
 
     .btn-audio {
-      min-width: clamp(52px, 11vw, 64px);
+      min-width: clamp(52px, 11vw, 66px);
     }
 
     .btn-audio.active {
@@ -187,46 +188,12 @@
       box-shadow: 0 0 10px rgba(255, 0, 127, 0.2);
     }
 
-    /* Seletor dos 2 Modos */
-    .mode-bar {
-      display: flex;
-      gap: 8px;
-      width: 100%;
-      max-width: 420px;
-      justify-content: center;
-      margin-top: 4px;
-      flex-shrink: 0;
-    }
-
-    .mode-tab {
-      flex: 1;
-      padding: clamp(5px, 1vh, 8px) 6px;
-      background: rgba(18, 24, 52, 0.85);
-      border: 1px solid var(--panel-border);
-      border-radius: 10px;
-      color: #94a3b8;
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(0.68rem, 1.4vh, 0.82rem);
-      font-weight: 800;
-      letter-spacing: 1px;
-      cursor: pointer;
-      text-align: center;
-      transition: all 0.2s ease;
-    }
-
-    .mode-tab.active {
-      color: var(--neon-cyan);
-      border-color: var(--neon-cyan);
-      background: rgba(0, 240, 255, 0.16);
-      box-shadow: 0 0 14px rgba(0, 240, 255, 0.35);
-    }
-
     #hint-banner {
       width: 100%;
       background: rgba(255, 208, 0, 0.12);
       border: 1px dashed rgba(255, 208, 0, 0.6);
       border-radius: 10px;
-      padding: clamp(4px, 0.8vh, 7px) 10px;
+      padding: clamp(4px, 0.8vh, 8px) 10px;
       color: var(--present);
       font-family: 'Orbitron', sans-serif;
       font-size: clamp(0.72rem, 1.4vh, 0.84rem);
@@ -242,16 +209,14 @@
 
     #game-container {
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       flex-grow: 1;
       width: 100%;
       min-height: 0;
-      padding: clamp(2px, 0.6vh, 6px) 0;
+      padding: clamp(2px, 0.6vh, 8px) 0;
     }
 
-    /* MODO TERMO CLÁSSICO */
     #board {
       display: grid;
       grid-template-rows: repeat(6, var(--tile-size));
@@ -291,6 +256,10 @@
       cursor: pointer;
     }
 
+    .row.active-row .tile:active {
+      transform: scale(0.96);
+    }
+
     .tile.selected {
       border-color: var(--neon-cyan) !important;
       box-shadow: 0 0 16px rgba(0, 240, 255, 0.75), inset 0 0 10px rgba(0, 240, 255, 0.35) !important;
@@ -303,27 +272,27 @@
     }
 
     .tile.pop {
-      animation: popQuantum 0.16s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: popQuantum 0.18s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .tile.flip {
-      animation: spaceFlip 0.65s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
+      animation: spaceFlip 0.7s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
     }
 
     .tile[data-state="correct"] {
       background: linear-gradient(135deg, #00b359, var(--correct));
       border-color: var(--correct) !important;
-      box-shadow: 0 0 16px var(--correct-glow);
+      box-shadow: 0 0 18px var(--correct-glow), inset 0 0 8px rgba(255, 255, 255, 0.3);
       color: #05140b;
-      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+      text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
     }
 
     .tile[data-state="present"] {
       background: linear-gradient(135deg, #cc9900, var(--present));
       border-color: var(--present) !important;
-      box-shadow: 0 0 16px var(--present-glow);
+      box-shadow: 0 0 18px var(--present-glow), inset 0 0 8px rgba(255, 255, 255, 0.3);
       color: #1a1400;
-      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+      text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
     }
 
     .tile[data-state="absent"] {
@@ -336,132 +305,13 @@
     .row.shake { animation: warpShake 0.45s ease-in-out; }
     .row.bounce-win .tile { animation: pulseVictory 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) alternate 2; }
 
-    /* MODO CONTEXTO - ÁREA DE DIGITAÇÃO E RANKING */
-    #context-box {
-      display: none;
-      flex-direction: column;
-      width: 100%;
-      height: 100%;
-      max-width: 460px;
-      gap: 8px;
-    }
-
-    /* Campo visual destacado das letras sendo digitadas */
-    .context-input-display {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      background: rgba(15, 22, 50, 0.9);
-      border: 2px solid var(--neon-cyan);
-      border-radius: 12px;
-      padding: clamp(8px, 1.6vh, 12px) 14px;
-      box-shadow: 0 0 16px rgba(0, 240, 255, 0.25), inset 0 0 10px rgba(0, 240, 255, 0.1);
-      flex-shrink: 0;
-    }
-
-    .context-typing-text {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(1.1rem, 2.8vh, 1.45rem);
-      font-weight: 900;
-      color: #ffffff;
-      letter-spacing: 2px;
-      text-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
-      min-height: 28px;
-      display: flex;
-      align-items: center;
-    }
-
-    .cursor-blink {
-      display: inline-block;
-      width: 3px;
-      height: 1.2em;
-      background: var(--neon-cyan);
-      margin-left: 4px;
-      animation: blink 0.8s infinite;
-      vertical-align: middle;
-      box-shadow: 0 0 8px var(--neon-cyan);
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    .context-counter {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.76rem;
-      font-weight: 800;
-      color: #94a3b8;
-      background: rgba(0, 240, 255, 0.12);
-      border: 1px solid rgba(0, 240, 255, 0.3);
-      padding: 4px 8px;
-      border-radius: 8px;
-    }
-
-    /* Lista de Histórico / Ranking do Contexto */
-    .context-list {
-      flex: 1;
-      width: 100%;
-      min-height: 0;
-      background: rgba(10, 16, 38, 0.5);
-      border: 1px solid var(--panel-border);
-      border-radius: 12px;
-      padding: 8px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .context-card {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(20, 28, 62, 0.88);
-      border: 1px solid rgba(0, 240, 255, 0.2);
-      border-radius: 10px;
-      padding: 8px 12px;
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(0.78rem, 1.6vh, 0.88rem);
-      animation: popQuantum 0.2s ease;
-    }
-
-    .context-bar-wrap {
-      flex: 1;
-      height: 9px;
-      background: #192248;
-      border-radius: 5px;
-      margin: 0 10px;
-      overflow: hidden;
-    }
-
-    .context-bar {
-      height: 100%;
-      border-radius: 5px;
-      transition: width 0.4s ease;
-    }
-
-    .context-rank {
-      font-weight: 800;
-      font-size: clamp(0.8rem, 1.6vh, 0.9rem);
-      min-width: 50px;
-      text-align: right;
-    }
-
-    .rank-hot { color: #00ff88; text-shadow: 0 0 8px var(--correct-glow); }
-    .rank-warm { color: #ffd000; text-shadow: 0 0 8px var(--present-glow); }
-    .rank-cold { color: #ff007f; }
-
-    /* TECLADO */
     #keyboard {
       width: 100%;
       max-width: 480px;
       display: flex;
       flex-direction: column;
-      gap: clamp(3px, 0.8vh, 6px);
-      padding: 2px 2px clamp(3px, 0.8vh, 6px);
+      gap: clamp(4px, 0.8vh, 6px);
+      padding: 2px 2px clamp(4px, 1vh, 8px);
       flex-shrink: 0;
     }
 
@@ -549,7 +399,7 @@
       padding: 9px 16px;
       border-radius: 12px;
       font-weight: 800;
-      font-size: clamp(0.75rem, 1.6vh, 0.88rem);
+      font-size: clamp(0.75rem, 1.6vh, 0.9rem);
       letter-spacing: 0.8px;
       box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
       animation: spaceToast 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -578,7 +428,7 @@
       background: rgba(15, 22, 48, 0.96);
       border: 1px solid var(--neon-cyan);
       border-radius: clamp(16px, 4vw, 24px);
-      padding: clamp(20px, 4vh, 26px) clamp(16px, 4vw, 22px);
+      padding: clamp(20px, 4vh, 28px) clamp(16px, 4vw, 24px);
       width: 100%;
       max-width: 400px;
       text-align: center;
@@ -607,7 +457,7 @@
 
     .modal-card h2 {
       font-family: 'Orbitron', sans-serif;
-      font-size: clamp(1.25rem, 2.6vh, 1.5rem);
+      font-size: clamp(1.25rem, 2.8vh, 1.55rem);
       font-weight: 900;
       letter-spacing: 1.5px;
       background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta));
@@ -648,7 +498,7 @@
 
     .secret-reveal {
       font-family: 'Orbitron', sans-serif;
-      font-size: clamp(0.85rem, 1.6vh, 1rem);
+      font-size: clamp(0.9rem, 1.8vh, 1.05rem);
       font-weight: 800;
       color: var(--present);
       background: rgba(255, 208, 0, 0.1);
@@ -669,9 +519,9 @@
       background: linear-gradient(90deg, #00d2ff, #00f0ff);
       color: #070913;
       border: none;
-      padding: clamp(10px, 2vh, 13px);
+      padding: clamp(10px, 2vh, 14px);
       font-family: 'Orbitron', sans-serif;
-      font-size: clamp(0.85rem, 1.7vh, 0.95rem);
+      font-size: clamp(0.85rem, 1.8vh, 0.98rem);
       font-weight: 900;
       letter-spacing: 1.2px;
       border-radius: 12px;
@@ -743,28 +593,11 @@
       <button class="space-btn btn-new" onclick="iniciarJogo()">REINICIAR</button>
     </header>
 
-    <div class="mode-bar">
-      <button class="mode-tab active" onclick="trocarModo('termo')">TERMO CLÁSSICO</button>
-      <button class="mode-tab" onclick="trocarModo('contexto')">MODO CONTEXTO</button>
-    </div>
-
     <div id="hint-banner"></div>
     <div id="toast-container"></div>
 
     <div id="game-container">
-      <!-- MODO TERMO CLÁSSICO -->
       <div id="board"></div>
-
-      <!-- MODO CONTEXTO -->
-      <div id="context-box">
-        <div class="context-input-display">
-          <div class="context-typing-text">
-            <span id="context-typed-word">DIGITE UMA PALAVRA</span><span class="cursor-blink"></span>
-          </div>
-          <div class="context-counter" id="context-count-display">TENTATIVAS: 0</div>
-        </div>
-        <div class="context-list" id="context-list-view"></div>
-      </div>
     </div>
 
     <div id="keyboard"></div>
@@ -773,7 +606,7 @@
   <div id="stats-modal" class="modal-overlay">
     <div class="modal-card">
       <button class="modal-close" onclick="fecharEstatisticas()">&times;</button>
-      <h2 id="modal-title">RELATÓRIO DE MISSÃO</h2>
+      <h2>RELATÓRIO DE MISSÃO</h2>
       
       <div class="stats-grid">
         <div class="stat-pill">
@@ -801,7 +634,6 @@
   </div>
 
   <script>
-    // Sintetizador Web Audio
     let audioCtx = null;
     let isAudioOn = false;
     let masterGain = null;
@@ -809,8 +641,13 @@
     let bgTimer = null;
     let seqStep = 0;
 
-    const BASS_PITCHES = [110, 110, 130.81, 110, 146.83, 130.81, 110, 164.81, 110, 110, 130.81, 110, 98, 110, 123.47, 130.81];
-    const ARP_PITCHES = [440, 523.25, 659.25, 880, 587.33, 659.25, 880, 1046.50];
+    const BASS_PITCHES = [
+      110, 110, 130.81, 110, 146.83, 130.81, 110, 164.81,
+      110, 110, 130.81, 110, 98, 110, 123.47, 130.81
+    ];
+    const ARP_PITCHES = [
+      440, 523.25, 659.25, 880, 587.33, 659.25, 880, 1046.50
+    ];
 
     function initAudio() {
       if (audioCtx) return;
@@ -835,6 +672,7 @@
 
       osc.type = 'sawtooth';
       osc.frequency.setValueAtTime(freq, now);
+
       filter.type = 'lowpass';
       filter.frequency.setValueAtTime(700, now);
       filter.frequency.exponentialRampToValueAtTime(140, now + 0.16);
@@ -858,6 +696,7 @@
 
       osc.type = 'sine';
       osc.frequency.setValueAtTime(freq, now);
+
       gain.gain.setValueAtTime(0.08, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
 
@@ -872,8 +711,12 @@
       if (!isAudioOn) return;
       const bassNote = BASS_PITCHES[seqStep % BASS_PITCHES.length];
       const arpNote = ARP_PITCHES[seqStep % ARP_PITCHES.length];
+
       triggerBassPulse(bassNote);
-      if (seqStep % 2 === 0) triggerArpPulse(arpNote);
+      if (seqStep % 2 === 0) {
+        triggerArpPulse(arpNote);
+      }
+
       seqStep++;
       bgTimer = setTimeout(loopSequencer, 155);
     }
@@ -881,7 +724,11 @@
     function alternarSom() {
       const btn = document.getElementById("audio-toggle-btn");
       if (!audioCtx) initAudio();
-      if (audioCtx.state === 'suspended') audioCtx.resume();
+
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
       isAudioOn = !isAudioOn;
 
       if (isAudioOn) {
@@ -899,23 +746,25 @@
       }
     }
 
-    function playTypeSound(idx = 0) {
+    function playTypeSound(letterIdx = 0) {
       if (!audioCtx) initAudio();
       if (audioCtx.state === 'suspended') audioCtx.resume();
       try {
         const now = audioCtx.currentTime;
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
-        const baseFreq = 580 + (idx * 80);
+        
+        const baseFreq = 580 + (letterIdx * 90);
         osc.type = 'sawtooth';
         osc.frequency.setValueAtTime(baseFreq, now);
-        osc.frequency.exponentialRampToValueAtTime(baseFreq * 1.7, now + 0.05);
+        osc.frequency.exponentialRampToValueAtTime(baseFreq * 1.8, now + 0.05);
 
         gain.gain.setValueAtTime(0.16, now);
         gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
 
         osc.connect(gain);
         gain.connect(sfxGain);
+
         osc.start(now);
         osc.stop(now + 0.07);
       } catch (e) {}
@@ -928,6 +777,7 @@
         const now = audioCtx.currentTime;
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
+
         osc.type = 'triangle';
         osc.frequency.setValueAtTime(420, now);
         osc.frequency.exponentialRampToValueAtTime(140, now + 0.08);
@@ -937,6 +787,7 @@
 
         osc.connect(gain);
         gain.connect(sfxGain);
+
         osc.start(now);
         osc.stop(now + 0.1);
       } catch (e) {}
@@ -949,6 +800,7 @@
         const now = audioCtx.currentTime;
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
+
         osc.type = 'sine';
         osc.frequency.setValueAtTime(180, now);
         osc.frequency.exponentialRampToValueAtTime(650, now + 0.2);
@@ -958,6 +810,7 @@
 
         osc.connect(gain);
         gain.connect(sfxGain);
+
         osc.start(now);
         osc.stop(now + 0.23);
       } catch (e) {}
@@ -973,8 +826,10 @@
           const gain = audioCtx.createGain();
           osc.type = 'sine';
           osc.frequency.setValueAtTime(freq, now + idx * 0.06);
+
           gain.gain.setValueAtTime(0.22, now + idx * 0.06);
           gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.06 + 0.16);
+
           osc.connect(gain);
           gain.connect(sfxGain);
           osc.start(now + idx * 0.06);
@@ -990,6 +845,7 @@
         const now = audioCtx.currentTime;
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
+
         if (status === 'correct') {
           const freq = 660 + (index * 120);
           osc.type = 'triangle';
@@ -1010,8 +866,10 @@
           gain.gain.setValueAtTime(0.12, now);
           gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
         }
+
         osc.connect(gain);
         gain.connect(sfxGain);
+
         osc.start(now);
         osc.stop(now + 0.2);
       } catch (e) {}
@@ -1027,8 +885,10 @@
           const gain = audioCtx.createGain();
           osc.type = 'sawtooth';
           osc.frequency.setValueAtTime(freq, now + idx * 0.08);
+
           gain.gain.setValueAtTime(0.28, now + idx * 0.08);
           gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.08 + 0.12);
+
           osc.connect(gain);
           gain.connect(sfxGain);
           osc.start(now + idx * 0.08);
@@ -1049,8 +909,10 @@
             const gain = audioCtx.createGain();
             osc.type = 'triangle';
             osc.frequency.setValueAtTime(n, now);
+
             gain.gain.setValueAtTime(0.3, now);
             gain.gain.exponentialRampToValueAtTime(0.001, now + 0.9);
+
             osc.connect(gain);
             gain.connect(sfxGain);
             osc.start(now);
@@ -1072,8 +934,10 @@
             const gain = audioCtx.createGain();
             osc.type = 'sawtooth';
             osc.frequency.setValueAtTime(n, now);
+
             gain.gain.setValueAtTime(0.2, now);
             gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+
             osc.connect(gain);
             gain.connect(sfxGain);
             osc.start(now);
@@ -1122,46 +986,32 @@
     resizeSpace();
     animateSpace();
 
-    // ================= ESTADO E LÓGICA DO JOGO ================= //
-    let modoAtual = "termo"; // 'termo' ou 'contexto'
+    // ================= CARREGAMENTO DO BANCO DE PALAVRAS EXTERNO (.TXT) ================= //
     let PALAVRAS_SECRETAS = [];
     let DICIONARIO = [];
-    let bancoCarregado = false;
 
-    // Estado do Modo Termo Clássico
-    let segredoTermo = "";
-    let dicaTermo = "";
+    const TAMANHO = 5;
+    const MAX_TENTATIVAS = 6;
+    let segredo = "";
+    let dicaAtual = "";
     let tentativaAtual = 0;
     let letraSelecionada = 0;
-    let gridTermo = [];
-    let gameOverTermo = false;
+    let grid = [];
+    let gameOver = false;
+    let bancoCarregado = false;
 
-    // Estado do Modo Contexto
-    let segredoContexto = "";
-    let palavraDigitadaContexto = "";
-    let contextGuesses = [];
-    let gameOverContexto = false;
-
-    // Mapa Semântico Expandido do Modo Contexto
-    const CONTEXTO_MAP = {
-      "CAFE": { "CHA": 14, "LEITE": 28, "ACUCAR": 45, "BEBIDA": 65, "XICARA": 82, "AGUA": 110, "PAO": 140, "COMIDA": 190, "MANHA": 220, "BAR": 310, "DOCE": 340, "REFEICAO": 380, "CARRO": 3800 },
-      "TERRA": { "PLANETA": 6, "MUNDO": 15, "ESPACO": 35, "SOL": 52, "MARTE": 68, "LUA": 80, "ORBITA": 95, "NATUREZA": 120, "HUMANO": 160, "VIDA": 180, "UNIVERSO": 210, "CIDADE": 850, "COMPUTADOR": 3400 },
-      "BRASIL": { "PAIS": 8, "NACIONAL": 22, "SAMBA": 38, "FUTEBOL": 55, "RIO": 75, "AMERICA": 90, "PATRIA": 110, "POVO": 140, "CIDADE": 190, "ESTADO": 240, "MUNDO": 510, "CANETA": 2900 },
-      "FESTA": { "MUSICA": 12, "DANCA": 20, "SHOW": 35, "BALADA": 48, "ALEGRIA": 62, "BEBIDA": 85, "AMIGOS": 110, "COMIDA": 140, "NOITE": 170, "EVENTO": 220, "CHURRASCO": 260, "LIVRO": 3100 },
-      "CARRO": { "MOTO": 12, "VEICULO": 25, "MOTOR": 40, "ESTRADA": 60, "PNEU": 85, "TRANSPORTE": 110, "GASOLINA": 135, "VIAGEM": 180, "RUA": 210, "CIDADE": 340, "FRUTA": 4200 },
-      "LIVRO": { "LEITURA": 10, "PAGINA": 22, "TEXTO": 38, "HISTORIA": 55, "AUTOR": 72, "BIBLIOTECA": 95, "ESTUDO": 120, "ESCOLA": 150, "PAPEL": 180, "PALAVRA": 210, "PIZZA": 3800 }
-    };
-
-    // Estatísticas Persistentes por Modo
-    let stats = JSON.parse(localStorage.getItem("termobr_stats_dual")) || {
-      termo: { jogos: 0, vitorias: 0, streak: 0, maxStreak: 0 },
-      contexto: { jogos: 0, vitorias: 0, streak: 0, maxStreak: 0 }
+    // Estatísticas Persistentes
+    let stats = JSON.parse(localStorage.getItem("termobr_stats")) || {
+      jogos: 0,
+      vitorias: 0,
+      streak: 0,
+      maxStreak: 0
     };
 
     let playedWords = JSON.parse(localStorage.getItem("termobr_played_words")) || [];
 
     function salvarStats() {
-      localStorage.setItem("termobr_stats_dual", JSON.stringify(stats));
+      localStorage.setItem("termobr_stats", JSON.stringify(stats));
     }
 
     function salvarPalavraJogada(palavra) {
@@ -1184,27 +1034,42 @@
       setTimeout(() => toast.remove(), 2400);
     }
 
-    function trocarModo(modo) {
-      modoAtual = modo;
-      document.querySelectorAll(".mode-tab").forEach(tab => {
-        const isThis = (modo === 'termo' && tab.innerText.includes('CLÁSSICO')) || (modo === 'contexto' && tab.innerText.includes('CONTEXTO'));
-        tab.classList.toggle("active", isThis);
-      });
-      iniciarJogo();
-    }
-
     function revelarDica() {
-      const isGameOver = modoAtual === 'termo' ? gameOverTermo : gameOverContexto;
-      if (isGameOver || !bancoCarregado) return;
+      if (gameOver || !bancoCarregado) return;
       const banner = document.getElementById("hint-banner");
-      if (modoAtual === 'contexto') {
-        banner.textContent = `DICA DE TELEMETRIA: DIGITE PALAVRAS E DESCUBRA POR PROXIMIDADE (#1 É O SEGREDO)`;
-      } else {
-        banner.textContent = `DICA: ${dicaTermo}`;
-      }
+      banner.textContent = `DICA: ${dicaAtual}`;
       banner.style.display = "block";
       playHintSound();
-      mostrarToast(modoAtual === 'contexto' ? "MODO CONTEXTO ATIVO" : `DICA: ${dicaTermo}`);
+      mostrarToast(`DICA: ${dicaAtual}`);
+    }
+
+    function atualizarDestaqueLinha() {
+      for (let r = 0; r < MAX_TENTATIVAS; r++) {
+        const rowEl = document.getElementById(`row-${r}`);
+        if (rowEl) {
+          if (r === tentativaAtual && !gameOver) {
+            rowEl.classList.add("active-row");
+          } else {
+            rowEl.classList.remove("active-row");
+          }
+        }
+        for (let c = 0; c < TAMANHO; c++) {
+          const tile = document.getElementById(`tile-${r}-${c}`);
+          if (tile) {
+            if (r === tentativaAtual && c === letraSelecionada && !gameOver) {
+              tile.classList.add("selected");
+            } else {
+              tile.classList.remove("selected");
+            }
+          }
+        }
+      }
+    }
+
+    function selecionarTile(colIdx) {
+      if (gameOver) return;
+      letraSelecionada = colIdx;
+      atualizarDestaqueLinha();
     }
 
     function montarTeclado() {
@@ -1231,6 +1096,7 @@
             btn.classList.add("wide");
           }
 
+          // Suporte a toque otimizado sem atraso
           btn.addEventListener("pointerdown", (e) => {
             e.preventDefault();
             if (tecla === "ENVIAR") tratarEntrada("ENTER");
@@ -1246,43 +1112,27 @@
     async function carregarBancoDePalavras() {
       try {
         const resposta = await fetch("palavras_termobr.txt");
-        if (!resposta.ok) throw new Error("Arquivo TXT não encontrado");
+        if (!resposta.ok) throw new Error("Falha no carregamento do arquivo TXT");
         const texto = await resposta.text();
         processarTextoBanco(texto);
       } catch (err) {
         console.warn("Aviso: Carregando banco interno de contingência...", err);
+        mostrarToast("CARREGANDO MISSÃO...");
         const fallbackTxt = "TERRA;O NOSSO PLANETA AZUL
-ASTRO;COISA DO MUNDO GEEK OU ESPACIAL
-MARTE;COISA DO MUNDO GEEK OU ESPACIAL
-SOLAR;COISA DO MUNDO GEEK OU ESPACIAL
-ORBIT;COISA DO MUNDO GEEK OU ESPACIAL
-COSMO;COISA DO MUNDO GEEK OU ESPACIAL
-LASER;OBJETO QUE A GENTE USA OU VE POR AI
-SINAL;COISA DO MUNDO GEEK OU ESPACIAL
-SONDA;COISA DO MUNDO GEEK OU ESPACIAL
-PIXEL;COISA DO MUNDO GEEK OU ESPACIAL
-DADOS;COISA DO MUNDO GEEK OU ESPACIAL
-BYTES;COISA DO MUNDO GEEK OU ESPACIAL
-ROBOT;COISA DO MUNDO GEEK OU ESPACIAL
-CYBER;COISA DO MUNDO GEEK OU ESPACIAL
-RADAR;OBJETO QUE A GENTE USA OU VE POR AI
-FESTA;SENSAÇÃO, VIBE OU JEITO DE SENTIR
-DANCA;UMA AÇÃO QUE A GENTE FAZ
-AMIGO;ALGUEM, UMA PESSOA OU PAPEL SOCIAL
-NOITE;COISA DA NATUREZA OU DO AR LIVRE
-LIVRO;OBJETO QUE A GENTE USA OU VE POR AI
-CHAVE;OBJETO QUE A GENTE USA OU VE POR AI
-PORTA;OBJETO QUE A GENTE USA OU VE POR AI
-CARRO;OBJETO QUE A GENTE USA OU VE POR AI
-NAVIO;OBJETO QUE A GENTE USA OU VE POR AI
-AVIAO;OBJETO QUE A GENTE USA OU VE POR AI
-FRUTA;COISA DE COMER OU BEBER
-ARROZ;TEM NA COZINHA OU NA MESA
-CARNE;TEM NA COZINHA OU NA MESA
-LEITE;COISA DE COMER OU BEBER
-PIZZA;TEM NA COZINHA OU NA MESA
-BACON;TEM NA COZINHA OU NA MESA
-CANJA;COISA DE COMER OU BEBER";
+ASTRO;ESTRELA BRILHANTE NO CÉU
+MARTE;O PLANETA VERMELHO VIZINHO
+SOLAR;ENERGIA QUE VEM DO SOL
+ORBIT;A VOLTA QUE O SATÉLITE DÁ
+COSMO;O UNIVERSO SIDERAL INFINITO
+LASER;LUZ COLORIDA E CONCENTRADA
+SINAL;ONDA DE WI-FI OU CELULAR
+SONDA;ROBÔ ENVIADO PRO ESPAÇO
+PIXEL;PONTINHO COLORIDO DA TELA
+DADOS;INFORMAÇÃO DO COMPUTADOR
+BYTES;TAMANHO DE ARQUIVO DIGITAL
+ROBOT;MÁQUINA QUE FAZ TAREFAS SOZINHA
+CYBER;COISA DO MUNDO DA INTERNET
+RADAR;EQUIPAMENTO QUE PEGA VELOCIDADE";
         processarTextoBanco(fallbackTxt);
       }
     }
@@ -1298,7 +1148,7 @@ CANJA;COISA DE COMER OU BEBER";
         const partes = linha.split(";");
         if (partes.length >= 1) {
           const palavra = normalizar(partes[0].trim());
-          const dica = partes[1] ? partes[1].trim() : "DETALHE DO COTIDIANO";
+          const dica = partes[1] ? partes[1].trim() : "PALAVRA POPULAR DO DIA A DIA";
           if (palavra.length === 5) {
             PALAVRAS_SECRETAS.push({ palavra, dica });
             DICIONARIO.push(palavra);
@@ -1314,34 +1164,8 @@ CANJA;COISA DE COMER OU BEBER";
     function iniciarJogo() {
       if (!bancoCarregado || PALAVRAS_SECRETAS.length === 0) return;
 
-      document.getElementById("hint-banner").style.display = "none";
-      document.getElementById("secret-box").style.display = "none";
-
-      const boardTermo = document.getElementById("board");
-      const boxContexto = document.getElementById("context-box");
-
-      if (modoAtual === "contexto") {
-        boardTermo.style.display = "none";
-        boxContexto.style.display = "flex";
-        
-        palavraDigitadaContexto = "";
-        contextGuesses = [];
-        gameOverContexto = false;
-
-        const chaves = Object.keys(CONTEXTO_MAP);
-        segredoContexto = chaves[Math.floor(Math.random() * chaves.length)];
-        
-        atualizarDisplayDigitacaoContexto();
-        renderizarListaContexto();
-        montarTeclado();
-        return;
-      }
-
-      // MODO TERMO CLÁSSICO
-      boardTermo.style.display = "grid";
-      boxContexto.style.display = "none";
-
       let disponiveis = PALAVRAS_SECRETAS.filter(item => !playedWords.includes(item.palavra));
+
       if (disponiveis.length === 0) {
         playedWords = [];
         localStorage.setItem("termobr_played_words", JSON.stringify([]));
@@ -1351,196 +1175,124 @@ CANJA;COISA DE COMER OU BEBER";
 
       const index = Math.floor(Math.random() * disponiveis.length);
       const item = disponiveis[index];
-      segredoTermo = item.palavra;
-      dicaTermo = item.dica;
-
+      segredo = item.palavra;
+      dicaAtual = item.dica;
+      
       tentativaAtual = 0;
       letraSelecionada = 0;
-      gameOverTermo = false;
-      gridTermo = Array(6).fill("").map(() => Array(5).fill(""));
+      gameOver = false;
+      grid = Array(MAX_TENTATIVAS).fill("").map(() => Array(TAMANHO).fill(""));
 
-      boardTermo.innerHTML = "";
-      for (let r = 0; r < 6; r++) {
+      document.getElementById("hint-banner").style.display = "none";
+      document.getElementById("hint-banner").textContent = "";
+
+      const board = document.getElementById("board");
+      board.innerHTML = "";
+
+      for (let r = 0; r < MAX_TENTATIVAS; r++) {
         const row = document.createElement("div");
         row.className = "row";
         row.id = `row-${r}`;
-        for (let c = 0; c < 5; c++) {
+        for (let c = 0; c < TAMANHO; c++) {
           const tile = document.createElement("div");
           tile.className = "tile";
           tile.id = `tile-${r}-${c}`;
           
           tile.addEventListener("pointerdown", (e) => {
             e.preventDefault();
-            if (r === tentativaAtual && !gameOverTermo) {
-              selecionarTileTermo(c);
+            if (r === tentativaAtual) {
+              selecionarTile(c);
             }
           });
 
           row.appendChild(tile);
         }
-        boardTermo.appendChild(row);
+        board.appendChild(row);
       }
 
       montarTeclado();
-      atualizarDestaqueLinhaTermo();
-    }
-
-    // Termo - Destaque de cursor / tile selecionado
-    function atualizarDestaqueLinhaTermo() {
-      if (modoAtual !== 'termo') return;
-      for (let r = 0; r < 6; r++) {
-        const rowEl = document.getElementById(`row-${r}`);
-        if (rowEl) {
-          if (r === tentativaAtual && !gameOverTermo) {
-            rowEl.classList.add("active-row");
-          } else {
-            rowEl.classList.remove("active-row");
-          }
-        }
-        for (let c = 0; c < 5; c++) {
-          const tile = document.getElementById(`tile-${r}-${c}`);
-          if (tile) {
-            if (r === tentativaAtual && c === letraSelecionada && !gameOverTermo) {
-              tile.classList.add("selected");
-            } else {
-              tile.classList.remove("selected");
-            }
-          }
-        }
-      }
-    }
-
-    function selecionarTileTermo(colIdx) {
-      if (gameOverTermo) return;
-      letraSelecionada = colIdx;
-      atualizarDestaqueLinhaTermo();
-    }
-
-    // Contexto - Atualiza o campo de letras digitadas em tempo real
-    function atualizarDisplayDigitacaoContexto() {
-      const display = document.getElementById("context-typed-word");
-      const counter = document.getElementById("context-count-display");
-
-      if (palavraDigitadaContexto.length === 0) {
-        display.textContent = "DIGITE UMA PALAVRA";
-        display.style.opacity = "0.5";
-      } else {
-        display.textContent = palavraDigitadaContexto;
-        display.style.opacity = "1";
-      }
-
-      counter.textContent = `TENTATIVAS: ${contextGuesses.length}`;
+      atualizarDestaqueLinha();
+      document.getElementById("secret-box").style.display = "none";
     }
 
     function tratarEntrada(key) {
-      if (!bancoCarregado) return;
-
-      if (modoAtual === "contexto") {
-        if (gameOverContexto) return;
-        if (key === "ENTER") {
-          validarTentativaContexto();
-        } else if (key === "⌫" || key === "BACKSPACE") {
-          if (palavraDigitadaContexto.length > 0) {
-            palavraDigitadaContexto = palavraDigitadaContexto.slice(0, -1);
-            atualizarDisplayDigitacaoContexto();
-            playDeleteSound();
-          }
-        } else if (/^[A-ZÇ]$/i.test(key) && key.length === 1) {
-          if (palavraDigitadaContexto.length < 16) {
-            palavraDigitadaContexto += normalizar(key);
-            atualizarDisplayDigitacaoContexto();
-            playTypeSound(palavraDigitadaContexto.length);
-          }
-        }
-        return;
-      }
-
-      // MODO TERMO CLÁSSICO
-      if (gameOverTermo) return;
+      if (gameOver || !bancoCarregado) return;
 
       if (key === "ENTER") {
-        validarTentativaTermo();
+        validarTentativa();
       } else if (key === "⌫" || key === "BACKSPACE") {
-        apagarLetraTermo();
+        apagarLetra();
       } else if (key === "ARROWLEFT") {
         if (letraSelecionada > 0) {
           letraSelecionada--;
-          atualizarDestaqueLinhaTermo();
+          atualizarDestaqueLinha();
         }
       } else if (key === "ARROWRIGHT") {
-        if (letraSelecionada < 4) {
+        if (letraSelecionada < TAMANHO - 1) {
           letraSelecionada++;
-          atualizarDestaqueLinhaTermo();
+          atualizarDestaqueLinha();
         }
       } else if (/^[A-ZÇ]$/i.test(key) && key.length === 1) {
-        inserirLetraTermo(normalizar(key));
+        inserirLetra(normalizar(key));
       }
     }
 
-    function encontrarProximoVazioTermo(dePos) {
-      for (let i = dePos; i < 5; i++) {
-        if (gridTermo[tentativaAtual][i] === "") return i;
+    function encontrarProximoVazio(dePos) {
+      for (let i = dePos; i < TAMANHO; i++) {
+        if (grid[tentativaAtual][i] === "") return i;
       }
       for (let i = 0; i < dePos; i++) {
-        if (gridTermo[tentativaAtual][i] === "") return i;
+        if (grid[tentativaAtual][i] === "") return i;
       }
       return -1;
     }
 
-    function inserirLetraTermo(letra) {
-      gridTermo[tentativaAtual][letraSelecionada] = letra;
+    function inserirLetra(letra) {
+      grid[tentativaAtual][letraSelecionada] = letra;
       const tile = document.getElementById(`tile-${tentativaAtual}-${letraSelecionada}`);
-      if (tile) {
-        tile.textContent = letra;
-        tile.setAttribute("data-state", "filled");
-        tile.classList.remove("pop");
-        void tile.offsetWidth;
-        tile.classList.add("pop");
-      }
-
+      tile.textContent = letra;
+      tile.setAttribute("data-state", "filled");
+      tile.classList.remove("pop");
+      void tile.offsetWidth;
+      tile.classList.add("pop");
+      
       playTypeSound(letraSelecionada);
 
-      const proximoVazio = encontrarProximoVazioTermo(letraSelecionada + 1);
+      const proximoVazio = encontrarProximoVazio(letraSelecionada + 1);
       if (proximoVazio !== -1) {
         letraSelecionada = proximoVazio;
-      } else if (letraSelecionada < 4) {
+      } else if (letraSelecionada < TAMANHO - 1) {
         letraSelecionada++;
       }
-      atualizarDestaqueLinhaTermo();
+      atualizarDestaqueLinha();
     }
 
-    function apagarLetraTermo() {
-      if (gridTermo[tentativaAtual][letraSelecionada] !== "") {
-        gridTermo[tentativaAtual][letraSelecionada] = "";
+    function apagarLetra() {
+      if (grid[tentativaAtual][letraSelecionada] !== "") {
+        grid[tentativaAtual][letraSelecionada] = "";
         const tile = document.getElementById(`tile-${tentativaAtual}-${letraSelecionada}`);
-        if (tile) {
-          tile.textContent = "";
-          tile.removeAttribute("data-state");
-        }
+        tile.textContent = "";
+        tile.removeAttribute("data-state");
         playDeleteSound();
       } else if (letraSelecionada > 0) {
         letraSelecionada--;
-        gridTermo[tentativaAtual][letraSelecionada] = "";
+        grid[tentativaAtual][letraSelecionada] = "";
         const tile = document.getElementById(`tile-${tentativaAtual}-${letraSelecionada}`);
-        if (tile) {
-          tile.textContent = "";
-          tile.removeAttribute("data-state");
-        }
+        tile.textContent = "";
+        tile.removeAttribute("data-state");
         playDeleteSound();
       }
-      atualizarDestaqueLinhaTermo();
+      atualizarDestaqueLinha();
     }
 
     function shakeRow(rowIdx) {
       const row = document.getElementById(`row-${rowIdx}`);
-      if (row) {
-        row.classList.add("shake");
-        setTimeout(() => row.classList.remove("shake"), 460);
-      }
+      row.classList.add("shake");
+      setTimeout(() => row.classList.remove("shake"), 460);
     }
 
-    function validarTentativaTermo() {
-      const incompleto = gridTermo[tentativaAtual].some(c => c === "");
+    function validarTentativa() {
+      const incompleto = grid[tentativaAtual].some(c => c === "");
       if (incompleto) {
         mostrarToast("PREENCHA TODAS AS 5 LETRAS");
         shakeRow(tentativaAtual);
@@ -1548,7 +1300,7 @@ CANJA;COISA DE COMER OU BEBER";
         return;
       }
 
-      const tentativa = gridTermo[tentativaAtual].join("");
+      const tentativa = grid[tentativaAtual].join("");
 
       if (!DICIONARIO.includes(tentativa)) {
         mostrarToast("PALAVRA NÃO RECONHECIDA NO BANCO");
@@ -1559,35 +1311,39 @@ CANJA;COISA DE COMER OU BEBER";
 
       playScanSound();
 
-      const segredoArr = segredoTermo.split("");
-      const resultado = Array(5).fill("absent");
+      const segredoArr = segredo.split("");
+      const resultado = Array(TAMANHO).fill("absent");
       const contagem = {};
 
-      for (const char of segredoTermo) {
+      for (const char of segredo) {
         contagem[char] = (contagem[char] || 0) + 1;
       }
 
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < TAMANHO; i++) {
         if (tentativa[i] === segredoArr[i]) {
           resultado[i] = "correct";
           contagem[tentativa[i]]--;
         }
       }
 
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < TAMANHO; i++) {
         if (resultado[i] !== "correct" && contagem[tentativa[i]] > 0) {
           resultado[i] = "present";
           contagem[tentativa[i]]--;
         }
       }
 
-      for (let i = 0; i < 5; i++) {
+      const tempoFlip = 700;
+      const intervaloLetras = 240;
+
+      for (let i = 0; i < TAMANHO; i++) {
         const tile = document.getElementById(`tile-${tentativaAtual}-${i}`);
         tile.classList.remove("selected");
         const status = resultado[i];
         
         setTimeout(() => {
           tile.classList.add("flip");
+          
           setTimeout(() => {
             tile.setAttribute("data-state", status);
             playRevealSound(status, i);
@@ -1599,151 +1355,66 @@ CANJA;COISA DE COMER OU BEBER";
                 keyEl.setAttribute("data-state", status);
               }
             }
-          }, 280);
-        }, i * 180);
+          }, tempoFlip * 0.48);
+
+        }, i * intervaloLetras);
       }
 
-      const delayTermino = 5 * 180 + 350;
+      const delayTermino = (TAMANHO - 1) * intervaloLetras + tempoFlip + 80;
 
       setTimeout(() => {
-        if (tentativa === segredoTermo) {
+        if (tentativa === segredo) {
           mostrarToast("MISSÃO CUMPRIDA!");
           const curRow = document.getElementById(`row-${tentativaAtual}`);
-          if (curRow) curRow.classList.add("bounce-win");
+          curRow.classList.add("bounce-win");
           soltarParticulasEspaciais();
           playVictoryChime();
-          gameOverTermo = true;
-          salvarPalavraJogada(segredoTermo);
+          gameOver = true;
+          salvarPalavraJogada(segredo);
           atualizarEstatisticas(true);
-          atualizarDestaqueLinhaTermo();
+          atualizarDestaqueLinha();
           setTimeout(abrirEstatisticas, 1900);
           return;
         }
 
-        if (tentativaAtual === 5) {
-          mostrarToast(`SINAL PERDIDO: ${segredoTermo}`);
+        if (tentativaAtual === MAX_TENTATIVAS - 1) {
+          mostrarToast(`SINAL PERDIDO: ${segredo}`);
           playDefeatSound();
-          gameOverTermo = true;
-          salvarPalavraJogada(segredoTermo);
+          gameOver = true;
+          salvarPalavraJogada(segredo);
           atualizarEstatisticas(false);
           const secretBox = document.getElementById("secret-box");
-          secretBox.innerHTML = `<span>PALAVRA-CHAVE: <b>${segredoTermo}</b></span><small style="color: #94a3b8; margin-top: 4px;">DICA: ${dicaTermo}</small>`;
+          secretBox.innerHTML = `<span>PALAVRA-CHAVE: <b>${segredo}</b></span><small style="color: #94a3b8; margin-top: 4px;">DICA: ${dicaAtual}</small>`;
           secretBox.style.display = "flex";
-          atualizarDestaqueLinhaTermo();
+          atualizarDestaqueLinha();
           setTimeout(abrirEstatisticas, 1700);
           return;
         }
 
         tentativaAtual++;
         letraSelecionada = 0;
-        atualizarDestaqueLinhaTermo();
+        atualizarDestaqueLinha();
       }, delayTermino);
     }
 
-    // Validação do Modo Contexto
-    function validarTentativaContexto() {
-      const tentativa = palavraDigitadaContexto.trim();
-
-      if (tentativa.length === 0) {
-        mostrarToast("DIGITE UMA PALAVRA PRIMEIRO");
-        return;
-      }
-
-      if (contextGuesses.some(g => g.word === tentativa)) {
-        mostrarToast("PALAVRA JÁ TENTADA");
-        palavraDigitadaContexto = "";
-        atualizarDisplayDigitacaoContexto();
-        return;
-      }
-
-      const mapa = CONTEXTO_MAP[segredoContexto] || {};
-      let distancia = 9999;
-
-      if (tentativa === segredoContexto) {
-        distancia = 1;
-      } else if (mapa[tentativa]) {
-        distancia = mapa[tentativa];
-      } else {
-        // Cálculo heurístico de proximidade com ruído controlado
-        const diffLen = Math.abs(tentativa.length - segredoContexto.length);
-        distancia = Math.floor(diffLen * 380 + 550 + Math.random() * 250);
-      }
-
-      const pct = Math.max(3, Math.min(100, Math.round(100 - (distancia / 35))));
-      contextGuesses.push({ word: tentativa, rank: distancia, pct: pct });
-      contextGuesses.sort((a, b) => a.rank - b.rank);
-
-      palavraDigitadaContexto = "";
-      atualizarDisplayDigitacaoContexto();
-      renderizarListaContexto();
-
-      if (distancia === 1) {
-        mostrarToast("PARABÉNS! VOCÊ ACERTOU O CONTEXTO!");
-        soltarParticulasEspaciais();
-        playVictoryChime();
-        gameOverContexto = true;
-        atualizarEstatisticas(true);
-        const secretBox = document.getElementById("secret-box");
-        secretBox.innerHTML = `<span>PALAVRA DO CONTEXTO: <b>${segredoContexto}</b></span><small style="color: #00ff88; margin-top: 4px;">DESCOBERTO EM ${contextGuesses.length} TENTATIVAS</small>`;
-        secretBox.style.display = "flex";
-        setTimeout(abrirEstatisticas, 1900);
-      } else {
-        playScanSound();
-      }
-    }
-
-    function renderizarListaContexto() {
-      const listView = document.getElementById("context-list-view");
-      listView.innerHTML = "";
-
-      contextGuesses.forEach(item => {
-        const card = document.createElement("div");
-        card.className = "context-card";
-
-        let corBarra = "linear-gradient(90deg, #ff007f, #ffd000)";
-        let rankClass = "rank-cold";
-
-        if (item.rank === 1) {
-          corBarra = "linear-gradient(90deg, #00ff88, #00f0ff)";
-          rankClass = "rank-hot";
-        } else if (item.rank < 300) {
-          corBarra = "linear-gradient(90deg, #ffd000, #00ff88)";
-          rankClass = "rank-warm";
-        }
-
-        card.innerHTML = `
-          <span style="font-weight: 800; letter-spacing: 1px;">${item.word}</span>
-          <div class="context-bar-wrap">
-            <div class="context-bar" style="width: ${item.pct}%; background: ${corBarra};"></div>
-          </div>
-          <span class="context-rank ${rankClass}">#${item.rank}</span>
-        `;
-
-        listView.appendChild(card);
-      });
-    }
-
     function atualizarEstatisticas(venceu) {
-      const st = stats[modoAtual];
-      st.jogos++;
+      stats.jogos++;
       if (venceu) {
-        st.vitorias++;
-        st.streak++;
-        if (st.streak > st.maxStreak) st.maxStreak = st.streak;
+        stats.vitorias++;
+        stats.streak++;
+        if (stats.streak > stats.maxStreak) stats.maxStreak = stats.streak;
       } else {
-        st.streak = 0;
+        stats.streak = 0;
       }
       salvarStats();
     }
 
     function abrirEstatisticas() {
-      const st = stats[modoAtual];
-      document.getElementById("modal-title").textContent = modoAtual === 'contexto' ? "RELATÓRIO: CONTEXTO" : "RELATÓRIO: TERMO";
-      document.getElementById("stat-jogos").textContent = st.jogos;
-      const winRate = st.jogos > 0 ? Math.round((st.vitorias / st.jogos) * 100) : 0;
+      document.getElementById("stat-jogos").textContent = stats.jogos;
+      const winRate = stats.jogos > 0 ? Math.round((stats.vitorias / stats.jogos) * 100) : 0;
       document.getElementById("stat-vitorias").textContent = `${winRate}%`;
-      document.getElementById("stat-streak").textContent = st.streak;
-      document.getElementById("stat-max-streak").textContent = st.maxStreak;
+      document.getElementById("stat-streak").textContent = stats.streak;
+      document.getElementById("stat-max-streak").textContent = stats.maxStreak;
       document.getElementById("stats-modal").classList.add("active");
     }
 
@@ -1777,6 +1448,7 @@ CANJA;COISA DE COMER OU BEBER";
       }
 
       let animId;
+
       function render() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         let active = false;
@@ -1800,12 +1472,14 @@ CANJA;COISA DE COMER OU BEBER";
           }
         });
 
-        if (active) animId = requestAnimationFrame(render);
-        else {
+        if (active) {
+          animId = requestAnimationFrame(render);
+        } else {
           ctx.clearRect(0, 0, canvas.width, canvas.height);
           cancelAnimationFrame(animId);
         }
       }
+
       render();
     }
 
@@ -1823,11 +1497,13 @@ CANJA;COISA DE COMER OU BEBER";
       }
     });
 
+    // Impede rolagem indesejada ou zoom por gesto em smartphones
     document.addEventListener("gesturestart", (e) => e.preventDefault());
     document.addEventListener("touchmove", (e) => {
       if (e.scale !== 1) e.preventDefault();
     }, { passive: false });
 
+    // Inicia o carregamento assíncrono do arquivo de palavras
     carregarBancoDePalavras();
   </script>
 </body>
